@@ -1,9 +1,6 @@
 package com.company.topological;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 public class TopologicalSort {
 
@@ -14,6 +11,8 @@ public class TopologicalSort {
         for(List<Integer> node : adj) {
             node.forEach(v -> inorder[v]++);
         }
+
+        System.out.println(Arrays.toString(inorder));
 
         Queue<Integer> q = new LinkedList<>();
         for (int j = 0; j < size; j++) {

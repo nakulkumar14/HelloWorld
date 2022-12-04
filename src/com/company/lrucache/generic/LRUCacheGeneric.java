@@ -92,5 +92,6 @@ public class LRUCacheGeneric {
         cache.put(3, 3.62);
         System.out.println(cache.get(5));
         System.out.println(cache.get(3));
+        "".indexOf(' ');
     }
 }
