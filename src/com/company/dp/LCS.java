@@ -64,6 +64,8 @@ public class LCS {
   public static void main(String[] args) {
     String a = "XMJYAUZ", b = "MZJAWXU";
     int n = a.length(), m = b.length();
+    System.out.println(a);
+    System.out.println(b);
     System.out.println(lcs1(a, b, n, m));
     lcs2(a, b);
   }

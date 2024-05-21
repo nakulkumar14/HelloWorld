@@ -13,16 +13,17 @@ class BlockingQueue1 {
 
   public synchronized void add(int data) throws InterruptedException {
     System.out.println("size before adding : " + list.size());
-    if (list.size() == size) {
+    while (list.size() == size) {
       wait();
     }
     list.add(data);
+    System.out.println("Added data : " + data);
     notify();
   }
 
   public synchronized int remove() throws InterruptedException {
     System.out.println("size before removing : " + list.size());
-    if (list.size() == 0) {
+    while (list.size() == 0) {
       wait();
     }
     int ele = list.remove(0);
@@ -41,7 +42,7 @@ class Consumer1 implements Runnable {
 
   @Override
   public void run() {
-    for (int i = 0; i < 20; i++) {
+    for (int i = 0; i < 5; i++) {
       try {
         int remove = queue1.remove();
         System.out.println("Consumed : " + remove);
@@ -61,7 +62,7 @@ class Producer1 implements Runnable {
 
   @Override
   public void run() {
-    for (int i = 0; i < 20; i++) {
+    for (int i = 0; i < 5; i++) {
       try {
         queue1.add(i);
         System.out.println("Produced : " + i);
@@ -74,7 +75,7 @@ class Producer1 implements Runnable {
 
 public class CustomBlockingQueue1 {
   public static void main(String[] args) {
-    BlockingQueue1 queue1 = new BlockingQueue1(5);
+    BlockingQueue1 queue1 = new BlockingQueue1(1);
     Consumer1 c = new Consumer1(queue1);
     Producer1 p = new Producer1(queue1);
 

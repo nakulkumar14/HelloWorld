@@ -30,6 +30,7 @@ public class TerminateMain {
     } catch (InterruptedException e) {
       e.printStackTrace();
     }
+    System.out.println("Exiting main thread...");
     System.exit(0);
   }
 }

@@ -35,19 +35,65 @@ public class InterleavingOfStrings {
 
   static void test(String A, String B, String C) {
     if (isInterleaved(A, B, C))
-      System.out.println(C + " is interleaved of " +
-          A + " and " + B);
+      System.out.println(C + " is interleaved of " + A + " and " + B);
     else
-      System.out.println(C + " is not interleaved of " +
-          A + " and " + B);
+      System.out.println(C + " is not interleaved of " + A + " and " + B);
+
+    if (isInterLeave(A, B, C))
+      System.out.println(C + " is interleaved of " + A + " and " + B);
+    else
+      System.out.println(C + " is not interleaved of " + A + " and " + B);
+  }
+
+  static public boolean isInterLeave(String a, String b, String c) {
+    //Your code here
+    if (a.length() + b.length() != c.length()) {
+      return false;
+    }
+
+    int i = 0;
+    int j = 0;
+    int k = 0;
+    while (i < a.length() && j < b.length()) {
+      if (a.charAt(i) == c.charAt(k)) {
+        i++;
+      } else if (b.charAt(j) == c.charAt(k)) {
+        j++;
+      } else {
+        return false;
+      }
+      k++;
+    }
+
+    while (i < a.length()) {
+      if (a.charAt(i) == c.charAt(k)) {
+        i++;
+      } else {
+        return false;
+      }
+      k++;
+    }
+
+    while (j < b.length()) {
+      if (b.charAt(j) == c.charAt(k)) {
+        j++;
+      } else {
+        return false;
+      }
+      k++;
+    }
+
+    return true;
   }
 
   public static void main(String[] args) {
-    test("XXY", "XXZ", "XXZXXXY");
-    test("XY", "WZ", "WZXY");
-    test("XY", "X", "XXY");
-    test("YX", "X", "XXY");
-    test("XXY", "XXZ", "XXXXZY");
-    test("aabcc", "dbbca", "aadbbcbcac");
+//    test("XXY", "XXZ", "XXZXXXY");
+//    test("XY", "WZ", "WZXY");
+//    test("XY", "X", "XXY");
+//    test("YX", "X", "XXY");
+//    test("XXY", "XXZ", "XXXXZY");
+//    test("aabcc", "dbbca", "aadbbcbcac");
+    test("c", "ca", "cac");
+
   }
 }
